@@ -3,22 +3,30 @@ import ListContainer from './ListContainer';
 import ActionContainer from './ActionContainer';
 
 class Box extends Component{
+    
+    state = {
+        anytimer: this.props.isanytimer
+    }
     render() {
         return (
             <div>
                 <div>
-                    {this.props.isanytimer ? (
+                    {this.state.anytimer > 0 ? (
                         <div>
                             <div className='list__con'>
                                 <ListContainer />
                             </div>
 
                             <div className='action__con'>
-                                <ActionContainer isopen />
+                                <ActionContainer dis_list = {this.state.anytimer}/>
                             </div>
                         </div>
                     ) : (
-                        <ActionContainer isopen />
+                        <div>
+                                <h4>Welcome in your time manager</h4>
+                            <h6>No timer created</h6>
+                            <ActionContainer dis_list = {this.state.anytimer} />
+                        </div>
                     )}
                     
                 </div>
